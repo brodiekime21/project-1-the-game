@@ -15,8 +15,8 @@ const stage = new Image()
 stage.src = "../images/stage.png"
 
 
-const startingX = canvas.width/2 - 32.5
-const startingY = canvas.height/2 - 140
+const startingX = canvas.width/2 - 37.5
+const startingY = canvas.height/2 - 162.5
 
 let intervalId;
 let animationId;
@@ -28,10 +28,10 @@ let score = 0
 class Obstacle {
 
   constructor() {
-    this.x = Math.random() * 750;
+    this.x = Math.random() * 690;
     this.y = 0;
-    this.width = 50;
-    this.height = 50;
+    this.width = 60;
+    this.height = 60;
 
   }
 
@@ -40,7 +40,7 @@ class Obstacle {
   }
 
   draw() {
-    ctx.drawImage(drunkGirl, this.x, this.y, 50, 50)
+    ctx.drawImage(drunkGirl, this.x, this.y, 60, 60)
   }
 
 }
@@ -49,8 +49,8 @@ const player = {
 
   x: startingX,
   y: startingY,
-  width: 65,
-  height: 65,
+  width: 75,
+  height: 75,
 
   draw: function() {
     ctx.drawImage(bouncer, this.x, this.y, this.width, this.height)
@@ -74,16 +74,17 @@ const player = {
 }
 
 const dj = {
-    x: 300,
-    y: 300,
-    height: 150,
-    width: 150,
+    x: 287.5,
+    y: 287.5,
+    height: 175,
+    width: 175,
 
     draw: function(){
         ctx.drawImage(stage, this.x,this.y,this.width,this.height)
     }
 }
 
+let obstaclesArray = []
 
 
 function checkCollision (obstacle) {
@@ -92,18 +93,29 @@ function checkCollision (obstacle) {
     && obstacle.y < player.y + player.height 
     && obstacle.x < player.x + player.width 
     & obstacle.x + obstacle.width > player.x ) {
-      gameOver()
-  }
 
+    obstaclesArray.splice(obstaclesArray.indexOf(obstacle), 1);
+
+  }
 }
 
-let obstaclesArray = []
+function checkCollisionWithDj (obstacle) {
+
+    if (dj.y < obstacle.y + obstacle.height 
+      && obstacle.y < dj.y + dj.height 
+      && obstacle.x < dj.x + dj.width 
+      & obstacle.x + obstacle.width > dj.x ) {
+  console.log("hit the dj")
+        gameOver()  
+    }
+  }
+
 
 function createObstacle() {
   
   intervalId = setInterval(()=>{
     obstaclesArray.push(new Obstacle())
-  }, 2000)
+  }, 3000)
 }
 
 function animationLoop() {
@@ -136,6 +148,7 @@ function updateCanvas() {
       score++
       console.log("This is the score:", score, obstaclesArray)
     }
+    checkCollisionWithDj(obstaclesArray[i])
     checkCollision(obstaclesArray[i])
     obstaclesArray[i].newPosition()
     obstaclesArray[i].draw()
