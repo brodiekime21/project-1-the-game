@@ -148,10 +148,10 @@ function updateCanvas() {
       score++
       console.log("This is the score:", score, obstaclesArray)
     }
-    checkCollisionWithDj(obstaclesArray[i])
-    checkCollision(obstaclesArray[i])
     obstaclesArray[i].newPosition()
     obstaclesArray[i].draw()
+    checkCollisionWithDj(obstaclesArray[i])
+    checkCollision(obstaclesArray[i])
   }
   
   showScore()
