@@ -1,0 +1,52 @@
+body {
+    padding: 0;
+    text-align: center;
+    background-color: black;
+  }
+  
+  .game-intro {
+    float: left;
+    padding: 0% 10%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  #instructions {
+    font-size: 24px;
+    font-family: "Verdana";
+    color: white;
+    margin-bottom: 20px;
+    width: 600px;
+  }
+  
+  
+  .logo-img {
+    width: 600px;
+    margin: 0px 0px 0px 0px;
+  }
+  
+  .arrows-img {
+    width: 200px;
+  }
+  
+  body button {
+    font-size: 30px;
+    background-color: #d510d6;
+    color: #fff;
+    padding: 20px 40px 20px 40px;
+    border: 0;
+    box-shadow: 0;
+    border-radius: 12px;
+    margin-bottom: 20px;
+  }
+  
+  #game-board {
+      float: left;
+      padding: 20px 0px;
+  }
+  
+  canvas {
+    border: solid #d510d6;
+  
+  }
