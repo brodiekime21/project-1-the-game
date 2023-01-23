@@ -23,7 +23,7 @@ let animationId;
 
 let gameOn = false
 
-let time = 45;
+let time = 15;
 
 
 
@@ -125,7 +125,7 @@ function createObstacle() {
 function animationLoop() {
   animationId = setInterval(()=>{
     updateCanvas()
-  }, 16)
+  }, 64)
 }
 
 function showTime() {
@@ -146,7 +146,6 @@ function updateCanvas() {
   dj.draw()
   player.draw()
   
-  
 
   for (let i = 0; i < obstaclesArray.length; i++) {
     if (obstaclesArray[i].y > canvas.height) {
@@ -157,27 +156,24 @@ function updateCanvas() {
     checkCollisionWithDj(obstaclesArray[i])
     checkCollision(obstaclesArray[i])
   }
-
   
   
   showTime()
   if (time === -1) {
     gameOver()
   }
-  
 }
 
+let timer;
 
 function startGame() {
-    let timer=setInterval(timedown, 1000); //1000 will  run it every 1 second
-
+    clearInterval(timer)
+    time = 15
+    timer = setInterval(timedown, 1000);
+    
+    
     function timedown(){
-      time=time-1;
-      if (time <= -1)
-      {
-         clearInterval(timer);
-         return;
-      }
+      time= time - 1;
     }
 
   gameOn = true
@@ -217,7 +213,7 @@ function gameOver() {
   }
   
   obstaclesArray = []
-  time = 45
+  time = 15
   
 }
 
