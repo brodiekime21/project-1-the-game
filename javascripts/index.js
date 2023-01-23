@@ -15,8 +15,8 @@ const stage = new Image()
 stage.src = "../images/stage.png"
 
 
-const startingX = canvas.width/2 - 37.5
-const startingY = canvas.height/2 - 160
+const startingX = canvas.width/2 - 32.5
+const startingY = canvas.height/2 - 140
 
 let intervalId;
 let animationId;
@@ -30,8 +30,8 @@ class Obstacle {
   constructor() {
     this.x = Math.random() * 750;
     this.y = 0;
-    this.width = 60;
-    this.height = 60;
+    this.width = 50;
+    this.height = 50;
 
   }
 
@@ -40,7 +40,7 @@ class Obstacle {
   }
 
   draw() {
-    ctx.drawImage(drunkGirl, this.x, this.y, 60, 60)
+    ctx.drawImage(drunkGirl, this.x, this.y, 50, 50)
   }
 
 }
@@ -49,8 +49,8 @@ const player = {
 
   x: startingX,
   y: startingY,
-  width: 75,
-  height: 75,
+  width: 65,
+  height: 65,
 
   draw: function() {
     ctx.drawImage(bouncer, this.x, this.y, this.width, this.height)
@@ -74,10 +74,10 @@ const player = {
 }
 
 const dj = {
-    x: 287.5,
-    y: 287.5,
-    height: 175,
-    width: 175,
+    x: 300,
+    y: 300,
+    height: 150,
+    width: 150,
 
     draw: function(){
         ctx.drawImage(stage, this.x,this.y,this.width,this.height)
