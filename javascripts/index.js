@@ -32,7 +32,7 @@ let animationId;
 
 let gameOn = false
 
-let time = 30;
+// let time = 30;
 
 
 
@@ -130,19 +130,19 @@ const player = {
   },
 
   moveLeft: function() {
-    this.x = this.x - 15
+    this.x = this.x - 20
   },
 
   moveRight: function() {
-    this.x = this.x + 15
+    this.x = this.x + 20
   },
 
   moveUp: function() {
-    this.y = this.y - 15
+    this.y = this.y - 20
   },
 
   moveDown: function() {
-    this.y = this.y + 15
+    this.y = this.y + 20
   }
 }
 
@@ -256,25 +256,25 @@ function checkCollisionWithDj (obstacle) {
 function createObstacle() {
   intervalId = setInterval(()=>{
     obstaclesArray.push(new Obstacle())
-  }, 2000+ Math.random() * 10000)
+  }, 7000)
 }
 
 function createObstacle2() {
     intervalId = setInterval(()=>{
       obstaclesArray2.push(new Obstacle2())
-    }, 2000+ Math.random() * 10000)
+    }, 5000)
   }
 
 function createObstacleT() {
     intervalId = setInterval(()=>{
       obstaclesArrayT.push(new ObstacleT())
-    }, 2000+ Math.random() * 10000)
+    }, 6000)
   }
 
 function createObstacleB() {
     intervalId = setInterval(()=>{
       obstaclesArrayB.push(new ObstacleB())
-    }, 2000+ Math.random() * 10000)
+    }, 4000)
   }
 
 function animationLoop() {
@@ -355,7 +355,7 @@ let timer;
 
 function startGame() {
     clearInterval(timer)
-    time = 30
+    time = 45
     timer = setInterval(timedown, 1000);
     
     
@@ -410,7 +410,7 @@ function gameOver() {
   obstaclesArray2 = []
   obstaclesArrayT = []
   obstaclesArrayB = []
-  time = 30
+//   time = 30
   
 }
 
@@ -440,3 +440,9 @@ window.onload = () => {
   });
 
 };
+
+window.addEventListener("keydown", function(e) {
+    if(["Space","ArrowUp","ArrowDown","ArrowLeft","ArrowRight"].indexOf(e.code) > -1) {
+        e.preventDefault();
+    }
+}, false);
