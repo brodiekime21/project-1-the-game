@@ -23,13 +23,17 @@ let animationId;
 
 let gameOn = false
 
-let score = 0
+let time = 45;
+
+
+
+
 
 class Obstacle {
 
   constructor() {
     this.x = Math.random() * 690;
-    this.y = 0;
+    this.y = -60;
     this.width = 60;
     this.height = 60;
 
@@ -124,13 +128,13 @@ function animationLoop() {
   }, 16)
 }
 
-function showScore() {
+function showTime() {
   ctx.fillStyle = 'black'
   ctx.fillRect(485, 15, 250, 50)
 
   ctx.fillStyle = "white"
   ctx.font = '24px Verdana'
-  ctx.fillText(`Time Left: ${score}`, 500, 50)
+  ctx.fillText(`Time Left: ${time}`, 500, 50)
 }
 
 function updateCanvas() {
@@ -142,20 +146,22 @@ function updateCanvas() {
   dj.draw()
   player.draw()
   
+  
+
   for (let i = 0; i < obstaclesArray.length; i++) {
     if (obstaclesArray[i].y > canvas.height) {
       obstaclesArray.splice(i, 1)
-      score++
-      console.log("This is the score:", score, obstaclesArray)
     }
     obstaclesArray[i].newPosition()
     obstaclesArray[i].draw()
     checkCollisionWithDj(obstaclesArray[i])
     checkCollision(obstaclesArray[i])
   }
+
   
-  showScore()
-  if (score === 15) {
+  
+  showTime()
+  if (time === -1) {
     gameOver()
   }
   
@@ -163,6 +169,16 @@ function updateCanvas() {
 
 
 function startGame() {
+    let timer=setInterval(timedown, 1000); //1000 will  run it every 1 second
+
+    function timedown(){
+      time=time-1;
+      if (time <= -1)
+      {
+         clearInterval(timer);
+         return;
+      }
+    }
 
   gameOn = true
 
@@ -190,7 +206,7 @@ function gameOver() {
   ctx.fillStyle = 'black'
   ctx.fillRect(0,0,750,750)
   
-  if (score > 14) {
+  if (time === -1) {
     ctx.fillStyle = "white"
     ctx.font = '30px Verdana'
     ctx.fillText("Congratulations! You've SAVED THE RAVE!", 60, 200)
@@ -201,7 +217,7 @@ function gameOver() {
   }
   
   obstaclesArray = []
-  score = 0
+  time = 45
   
 }
 
