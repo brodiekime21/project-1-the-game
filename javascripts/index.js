@@ -11,6 +11,15 @@ bouncer.src = "../images/bouncer.png"
 const drunkGirl = new Image()
 drunkGirl.src = "../images/drunkGirl.png"
 
+const drunkGuy = new Image()
+drunkGuy.src = "../images/drunkGuy.png"
+
+const taylorSwift = new Image()
+taylorSwift.src = "../images/taylorSwift.png"
+
+
+
+
 const stage = new Image()
 stage.src = "../images/stage.png"
 
@@ -48,6 +57,46 @@ class Obstacle {
   }
 
 }
+
+class Obstacle2 {
+
+    constructor() {
+      this.x = -60;
+      this.y = Math.random() * 690;
+      this.width = 60;
+      this.height = 60;
+  
+    }
+  
+    newPosition() {
+      this.x++
+    }
+  
+    draw() {
+      ctx.drawImage(drunkGuy, this.x, this.y, 60, 60)
+    }
+  
+  }
+
+  class ObstacleT {
+
+    constructor() {
+      this.x = 750;
+      this.y = Math.random() * 650;
+      this.width = 65;
+      this.height = 100;
+  
+    }
+  
+    newPosition() {
+      this.x--
+    }
+  
+    draw() {
+      ctx.drawImage(taylorSwift, this.x, this.y, 65, 100)
+    }
+  
+  }
 
 const player = {
 
@@ -88,8 +137,11 @@ const dj = {
     }
 }
 
-let obstaclesArray = []
 
+
+let obstaclesArray = []
+let obstaclesArray2 = []
+let obstaclesArrayT=[]
 
 function checkCollision (obstacle) {
 
@@ -99,9 +151,30 @@ function checkCollision (obstacle) {
     & obstacle.x + obstacle.width > player.x ) {
 
     obstaclesArray.splice(obstaclesArray.indexOf(obstacle), 1);
-
   }
 }
+
+function checkCollision2 (obstacle2) {
+
+    if (player.y < obstacle2.y + obstacle2.height 
+      && obstacle2.y < player.y + player.height 
+      && obstacle2.x < player.x + player.width 
+      & obstacle2.x + obstacle2.width > player.x ) {
+  
+      obstaclesArray2.splice(obstaclesArray2.indexOf(obstacle2), 1);
+    }
+  }
+
+  function checkCollisionT (obstacleT) {
+
+    if (player.y < obstacleT.y + obstacleT.height 
+      && obstacleT.y < player.y + player.height 
+      && obstacleT.x < player.x + player.width 
+      & obstacleT.x + obstacleT.width > player.x ) {
+  
+      obstaclesArrayT.splice(obstaclesArrayT.indexOf(obstacleT), 1);
+    }
+  }
 
 function checkCollisionWithDj (obstacle) {
 
@@ -109,18 +182,51 @@ function checkCollisionWithDj (obstacle) {
       && obstacle.y < dj.y + dj.height 
       && obstacle.x < dj.x + dj.width 
       & obstacle.x + obstacle.width > dj.x ) {
-  console.log("hit the dj")
+  console.log("Obstacle 1 the dj")
+        gameOver()  
+    }
+  }
+
+  function checkCollisionWithDj2 (obstacle2) {
+
+    if (dj.y < obstacle2.y + obstacle2.height 
+      && obstacle2.y < dj.y + dj.height 
+      && obstacle2.x < dj.x + dj.width 
+      & obstacle2.x + obstacle2.width > dj.x ) {
+  console.log("Obstacle 2 the dj")
+        gameOver()  
+    }
+  }
+
+  function checkCollisionWithDjT (obstacleT) {
+
+    if (dj.y < obstacleT.y + obstacleT.height 
+      && obstacleT.y < dj.y + dj.height 
+      && obstacleT.x < dj.x + dj.width 
+      & obstacleT.x + obstacleT.width > dj.x ) {
+  console.log("Obstacle T the dj")
         gameOver()  
     }
   }
 
 
 function createObstacle() {
-  
   intervalId = setInterval(()=>{
     obstaclesArray.push(new Obstacle())
-  }, 3000)
+  }, 8000)
 }
+
+function createObstacle2() {
+    intervalId = setInterval(()=>{
+      obstaclesArray2.push(new Obstacle2())
+    }, 5000)
+  }
+
+function createObstacleT() {
+    intervalId = setInterval(()=>{
+      obstaclesArrayT.push(new ObstacleT())
+    }, 5000)
+  }
 
 function animationLoop() {
   animationId = setInterval(()=>{
@@ -151,11 +257,33 @@ function updateCanvas() {
     if (obstaclesArray[i].y > canvas.height) {
       obstaclesArray.splice(i, 1)
     }
+
     obstaclesArray[i].newPosition()
     obstaclesArray[i].draw()
     checkCollisionWithDj(obstaclesArray[i])
     checkCollision(obstaclesArray[i])
-  }
+}
+
+
+for (let i = 0; i < obstaclesArray2.length; i++) {
+    if (obstaclesArray2[i].y > canvas.height) {
+      obstaclesArray2.splice(i, 1)
+    }
+    obstaclesArray2[i].newPosition()
+    obstaclesArray2[i].draw()
+    checkCollisionWithDj2(obstaclesArray2[i])
+    checkCollision2(obstaclesArray2[i])
+}
+
+for (let i = 0; i < obstaclesArrayT.length; i++) {
+    if (obstaclesArrayT[i].y > canvas.height) {
+      obstaclesArrayT.splice(i, 1)
+    }
+    obstaclesArrayT[i].newPosition()
+    obstaclesArrayT[i].draw()
+    checkCollisionWithDjT(obstaclesArrayT[i])
+    checkCollisionT(obstaclesArrayT[i])
+}
   
   
   showTime()
@@ -179,6 +307,7 @@ function startGame() {
   gameOn = true
 
   obstaclesArray = []
+  obstaclesArray2 = []
   player.x = startingX
   player.y = startingY
 
@@ -186,6 +315,8 @@ function startGame() {
   dj.draw()
   player.draw()
   createObstacle()
+  createObstacle2()
+  createObstacleT()
   animationLoop()
 
 }
@@ -213,6 +344,8 @@ function gameOver() {
   }
   
   obstaclesArray = []
+  obstaclesArray2 = []
+  obstaclesArrayT = []
   time = 15
   
 }
