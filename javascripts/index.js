@@ -30,8 +30,8 @@ class Obstacle {
   constructor() {
     this.x = Math.random() * 750;
     this.y = 0;
-    this.width = 20 + Math.floor(Math.random() * 375);
-    this.height = 20;
+    this.width = 60;
+    this.height = 60;
 
   }
 
@@ -40,7 +40,6 @@ class Obstacle {
   }
 
   draw() {
-
     ctx.drawImage(drunkGirl, this.x, this.y, 60, 60)
   }
 
