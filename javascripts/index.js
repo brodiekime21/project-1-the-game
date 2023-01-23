@@ -8,8 +8,15 @@ dancefloor.src = "../images/dancefloor.png"
 const bouncer = new Image()
 bouncer.src = "../images/bouncer.png"
 
+const drunkGirl = new Image()
+drunkGirl.src = "../images/drunkGirl.png"
+
+const stage = new Image()
+stage.src = "../images/stage.png"
+
+
 const startingX = canvas.width/2 - 37.5
-const startingY = canvas.height/2 - 150
+const startingY = canvas.height/2 - 160
 
 let intervalId;
 let animationId;
@@ -33,8 +40,8 @@ class Obstacle {
   }
 
   draw() {
-    ctx.fillStyle = 'brown'
-    ctx.fillRect(this.x, this.y, this.width, this.height)
+
+    ctx.drawImage(drunkGirl, this.x, this.y, 60, 60)
   }
 
 }
@@ -66,6 +73,18 @@ const player = {
     this.y = this.y + 10
   }
 }
+
+const dj = {
+    x: 287.5,
+    y: 287.5,
+    height: 175,
+    width: 175,
+
+    draw: function(){
+        ctx.drawImage(stage, this.x,this.y,this.width,this.height)
+    }
+}
+
 
 
 function checkCollision (obstacle) {
@@ -109,7 +128,7 @@ function updateCanvas() {
   
   ctx.drawImage(dancefloor, 0, 0, 750, 750)
 
-  
+  dj.draw()
   player.draw()
   
   for (let i = 0; i < obstaclesArray.length; i++) {
@@ -140,6 +159,7 @@ function startGame() {
   player.y = startingY
 
   ctx.drawImage(dancefloor, 0, 0, 750, 750)
+  dj.draw()
   player.draw()
   createObstacle()
   animationLoop()
