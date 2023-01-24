@@ -32,7 +32,7 @@ let animationId;
 
 let gameOn = false
 
-// let time = 30;
+
 
 
 
@@ -130,19 +130,31 @@ const player = {
   },
 
   moveLeft: function() {
-    this.x = this.x - 20
+    this.x = this.x - 25
+    if(this.x <0){
+        this.x= this.x+25
+    }
   },
 
   moveRight: function() {
-    this.x = this.x + 20
+    this.x = this.x + 25
+    if(this.x >675){
+        this.x= this.x-25
+    }
   },
 
   moveUp: function() {
-    this.y = this.y - 20
+    this.y = this.y - 25
+    if(this.y <0){
+        this.y= this.y+25
+    }
   },
 
   moveDown: function() {
-    this.y = this.y + 20
+    this.y = this.y + 25
+    if(this.y >675){
+        this.y= this.y-25
+    }
   }
 }
 
@@ -274,7 +286,7 @@ function createObstacleT() {
 function createObstacleB() {
     intervalId = setInterval(()=>{
       obstaclesArrayB.push(new ObstacleB())
-    }, 4000)
+    }, 9000)
   }
 
 function animationLoop() {
@@ -285,11 +297,11 @@ function animationLoop() {
 
 function showTime() {
   ctx.fillStyle = 'black'
-  ctx.fillRect(485, 15, 250, 50)
+  ctx.fillRect(500, 19, 230, 46)
 
   ctx.fillStyle = "white"
-  ctx.font = '24px Verdana'
-  ctx.fillText(`Time Left: ${time}`, 500, 50)
+  ctx.font = '16px "Press Start 2P"'
+  ctx.fillText(`Time Left: ${time}`, 510, 50)
 }
 
 function updateCanvas() {
@@ -355,7 +367,7 @@ let timer;
 
 function startGame() {
     clearInterval(timer)
-    time = 45
+    time = 12
     timer = setInterval(timedown, 1000);
     
     
@@ -398,11 +410,13 @@ function gameOver() {
   
   if (time === -1) {
     ctx.fillStyle = "white"
-    ctx.font = '30px Verdana'
-    ctx.fillText("Congratulations! You've SAVED THE RAVE!", 60, 200)
+    ctx.font = '30px "Press Start 2P"'
+    ctx.fillText("Congratulations!", 145, 200)
+    ctx.font = '24px "Press Start 2P"'
+    ctx.fillText("You've SAVED THE RAVE!", 118, 250)
   } else {
     ctx.fillStyle = "white"
-    ctx.font = '30px Verdana'
+    ctx.font = '16px "Press Start 2P"'
     ctx.fillText("You didn't save the rave. You lose!", 110, 200)
   }
   

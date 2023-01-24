@@ -8,24 +8,27 @@ body {
     align-items: center;
   }
 
-
-
-
+html {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
   
   .game-intro {
     float: left;
-    padding: 50px 10% 0 10%;
+    padding: 50px 0 0 0;
     display: flex;
     flex-direction: column;
     align-items: center;
   }
   
   #instructions {
-    font-size: 24px;
-    font-family: "Verdana";
+    font-size: 20px;
+    font-family: 'Press Start 2P', cursive;
     color: white;
     margin-bottom: 50px;
-    width: 600px;
+    width: 650px;
+    line-height: 30px;
   }
   
   
@@ -39,7 +42,8 @@ body {
   }
   
   body button {
-    font-size: 30px;
+    font-size: 25px;
+    font-family: 'Press Start 2P', cursive;
     background-color: #d510d6;
     color: #fff;
     padding: 30px 50px 30px 50px;
@@ -50,7 +54,6 @@ body {
   }
   
   #game-board {
-      float: left;
       padding: 100px 0px;
   }
   
@@ -63,7 +66,8 @@ body {
     #body {
      display: flex;
      flex-direction: row;
-     align-items: center;     
+     align-items: center; 
+     justify-content: center;    
     }
 
     .game-intro {
