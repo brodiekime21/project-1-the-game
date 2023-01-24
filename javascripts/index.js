@@ -253,7 +253,16 @@ function checkCollisionWithDj (obstacle) {
       && obstacle.x < dj.x + dj.width 
       & obstacle.x + obstacle.width > dj.x ) {
   console.log("Obstacle 1 hit the dj")
-        gameOver()  
+        gameOver() 
+        ctx.fillStyle = "white"
+        ctx.font = '24px "Press Start 2P"'
+        ctx.fillText("OH NO!", 321, 140)
+        ctx.font = '20px "Press Start 2P"'
+        ctx.fillText("She spilled her beer", 180, 175) 
+        ctx.font = '20px "Press Start 2P"'
+        ctx.fillText("on the dj decks.", 225, 205) 
+        ctx.font = '28px "Press Start 2P"'
+        ctx.fillText("You lose!", 262, 250)
     }
   }
 
@@ -265,6 +274,15 @@ function checkCollisionWithDj (obstacle) {
       & obstacle2.x + obstacle2.width > dj.x ) {
   console.log("Obstacle 2 hit the dj")
         gameOver()  
+        ctx.fillStyle = "white"
+        ctx.font = '24px "Press Start 2P"'
+        ctx.fillText("OH NO!", 321, 140)
+        ctx.font = '20px "Press Start 2P"'
+        ctx.fillText("He spilled his beer", 190, 175) 
+        ctx.font = '20px "Press Start 2P"'
+        ctx.fillText("on the dj decks.", 225, 205) 
+        ctx.font = '28px "Press Start 2P"'
+        ctx.fillText("You lose!", 262, 250)
     }
   }
 
@@ -276,6 +294,13 @@ function checkCollisionWithDj (obstacle) {
       & obstacleT.x + obstacleT.width > dj.x ) {
   console.log("Obstacle T hit the dj")
         gameOver()  
+        ctx.fillStyle = "white"
+        ctx.font = '24px "Press Start 2P"'
+        ctx.fillText("OH NO!", 321, 165)
+        ctx.font = '20px "Press Start 2P"'
+        ctx.fillText("The DJ doesn't play Taylor Swift.", 60, 205)
+        ctx.font = '28px "Press Start 2P"'
+        ctx.fillText("You lose!", 262, 250)
     }
   }
 
@@ -287,6 +312,13 @@ function checkCollisionWithDj (obstacle) {
       & obstacleB.x + obstacleB.width > dj.x ) {
   console.log("Obstacle B hit the dj")
         gameOver()  
+        ctx.fillStyle = "white"
+        ctx.font = '24px "Press Start 2P"'
+        ctx.fillText("OH NO!", 321, 165)
+        ctx.font = '20px "Press Start 2P"'
+        ctx.fillText("The DJ already played Bad Bunny.", 75, 200)
+        ctx.font = '28px "Press Start 2P"'
+        ctx.fillText("You lose!", 262, 250)
     }
   }
 
@@ -312,13 +344,13 @@ function createObstacleT() {
 function createObstacleB() {
     intervalIdB = setInterval(()=>{
       obstaclesArrayB.push(new ObstacleB())
-    }, 9000)
+    }, 5000)
   }
 
 function animationLoop() {
   animationId = setInterval(()=>{
     updateCanvas()
-  }, 32)
+  }, 16)
 }
 
 function showTime() {
@@ -450,9 +482,34 @@ function gameOver() {
     ctx.font = '24px "Press Start 2P"'
     ctx.fillText("You've SAVED THE RAVE!", 118, 250)
   } else {
-    ctx.fillStyle = "white"
-    ctx.font = '16px "Press Start 2P"'
-    ctx.fillText("You didn't save the rave. You lose!", 110, 200)
+    
+//    if (!checkCollisionWithDj (obstacle) === false){
+//     ctx.fillStyle = "white"
+//         ctx.font = '16px "Press Start 2P"'
+//         ctx.fillText("OH NO! She spilled her beer on the dj decks. You lose!", 110, 200)
+//    }
+
+//    else if (!checkCollisionWithDj2(obstacle2) === false){
+//     ctx.fillStyle = "white"
+//     ctx.font = '16px "Press Start 2P"'
+//     ctx.fillText("OH NO! He spilled her beer on the dj decks. You lose!", 110, 200)
+// }
+
+//    else  if (!checkCollisionWithDjT(obstacleT) === false){
+//         ctx.fillStyle = "white"
+//         ctx.font = '16px "Press Start 2P"'
+//         ctx.fillText("The DJ doesn't play Taylor Swift. You lose!", 110, 200)
+//     }
+
+//     else if (!checkCollisionWithDjB(obstacleB) === false){
+//         ctx.fillStyle = "white"
+//         ctx.font = '16px "Press Start 2P"'
+//         ctx.fillText("The DJ already played Bad Bunny. You lose!", 110, 200)
+//     }
+
+    // ctx.fillStyle = "white"
+    // ctx.font = '16px "Press Start 2P"'
+    // ctx.fillText("You didn't save the rave. You lose!", 110, 200)
 
    
     song1.pause();
