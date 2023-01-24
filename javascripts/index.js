@@ -36,8 +36,8 @@ let animationId;
 let gameOn = false
 
 
-
-
+const song1 = new Audio("../songs/Mad World - Tears for Fears (Brodie Killem Edit) 1 minute.wav")
+const spindown = new Audio("../songs/cd_fx_spindown.wav")
 
 
 
@@ -390,10 +390,17 @@ for (let i = 0; i < obstaclesArrayB.length; i++) {
 }
 
 let timer;
+const buttons = document.querySelectorAll("button");
+
+buttons.forEach(button => {
+button.addEventListener("click", () => {
+song1.play();
+});
+});
 
 function startGame() {
     clearInterval(timer)
-    time = 12
+    time = 45
     timer = setInterval(timedown, 1000);
     
     
@@ -446,6 +453,12 @@ function gameOver() {
     ctx.fillStyle = "white"
     ctx.font = '16px "Press Start 2P"'
     ctx.fillText("You didn't save the rave. You lose!", 110, 200)
+
+   
+    song1.pause();
+    song1.currentTime = 0
+    spindown.play();
+    
   }
   
   obstaclesArray = []
