@@ -28,6 +28,9 @@ const startingX = canvas.width/2 - 37.5
 const startingY = canvas.height/2 - 162.5
 
 let intervalId;
+let intervalId2;
+let intervalIdB;
+let intervalIdT;
 let animationId;
 
 let gameOn = false
@@ -118,6 +121,20 @@ class Obstacle2 {
   
   }
 
+
+  const dj = {
+    x: 287.5,
+    y: 287.5,
+    height: 175,
+    width: 175,
+
+    draw: function(){
+        ctx.drawImage(stage, this.x,this.y,this.width,this.height)
+    }
+}
+
+
+
 const player = {
 
   x: startingX,
@@ -134,11 +151,17 @@ const player = {
     if(this.x <0){
         this.x= this.x+25
     }
+    if (this.y < 445 && this.y > 232.5 && this.x > 230 && this.x <450){
+        this.x= this.x+25
+    }
   },
 
   moveRight: function() {
     this.x = this.x + 25
     if(this.x >675){
+        this.x= this.x-25
+    }
+    if (this.y < 445 && this.y > 232.5 && this.x > 230 && this.x <450){
         this.x= this.x-25
     }
   },
@@ -148,6 +171,9 @@ const player = {
     if(this.y <0){
         this.y= this.y+25
     }
+    if (this.y < 445 && this.y > 232.5 && this.x > 230 && this.x <450){
+        this.y= this.y+25
+    }
   },
 
   moveDown: function() {
@@ -155,19 +181,19 @@ const player = {
     if(this.y >675){
         this.y= this.y-25
     }
+    if (this.y > 232.5 && this.y < 445 && this.x > 230 && this.x <450){
+        this.y= this.y-25
+    }
   }
 }
 
-const dj = {
-    x: 287.5,
-    y: 287.5,
-    height: 175,
-    width: 175,
 
-    draw: function(){
-        ctx.drawImage(stage, this.x,this.y,this.width,this.height)
-    }
-}
+
+
+
+
+
+
 
 
 
@@ -272,19 +298,19 @@ function createObstacle() {
 }
 
 function createObstacle2() {
-    intervalId = setInterval(()=>{
+    intervalId2 = setInterval(()=>{
       obstaclesArray2.push(new Obstacle2())
     }, 5000)
   }
 
 function createObstacleT() {
-    intervalId = setInterval(()=>{
+    intervalIdT = setInterval(()=>{
       obstaclesArrayT.push(new ObstacleT())
     }, 6000)
   }
 
 function createObstacleB() {
-    intervalId = setInterval(()=>{
+    intervalIdB = setInterval(()=>{
       obstaclesArrayB.push(new ObstacleB())
     }, 9000)
   }
@@ -393,7 +419,6 @@ function startGame() {
   createObstacleT()
   createObstacleB()
   animationLoop()
-
 }
 
 function gameOver() {
@@ -403,6 +428,9 @@ function gameOver() {
   console.log("Game over")
   clearInterval(animationId)
   clearInterval(intervalId)
+  clearInterval(intervalId2)
+  clearInterval(intervalIdB)
+  clearInterval(intervalIdT)
   
   ctx.clearRect(0,0,750,750)
   ctx.fillStyle = 'black'
@@ -424,7 +452,7 @@ function gameOver() {
   obstaclesArray2 = []
   obstaclesArrayT = []
   obstaclesArrayB = []
-//   time = 30
+
   
 }
 
