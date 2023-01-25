@@ -152,14 +152,9 @@ const player = {
   moveLeft: function() {
     this.x = this.x - 25
 
-
-
-
-
-
       cx = 375,
-      cy = 350,
-      r = 43.75,
+      cy = 375,
+      r = 70,
       rx = this.x;    
       ry = this.y;
       rw = this.width;    
@@ -184,10 +179,6 @@ const player = {
         this.x= this.x+25
     }
 
-
-
-
-
     // if (this.y < 445 && this.y > 232.5 && this.x > 230 && this.x <450){
     //     this.x= this.x+25
     // }
@@ -196,12 +187,9 @@ const player = {
   moveRight: function() {
     this.x = this.x + 25
 
-
-
-
       cx = 375,
-      cy = 350,
-      r = 43.75,
+      cy = 375,
+      r = 70,
       rx = this.x;    
       ry = this.y;
       rw = this.width;    
@@ -222,9 +210,6 @@ const player = {
         this.x= this.x-25;
     }
 
-
-
-
     if(this.x >675){
         this.x= this.x-25
     }
@@ -239,11 +224,9 @@ const player = {
   moveUp: function() {
     this.y = this.y - 25
 
-
-
       cx = 375,
-      cy = 350,
-      r = 43.75,
+      cy = 375,
+      r = 70,
       rx = this.x;    
       ry = this.y;
       rw = this.width;    
@@ -267,8 +250,6 @@ const player = {
         this.y= this.y+25
     }
 
-
-
     // if (this.y < 445 && this.y > 232.5 && this.x > 230 && this.x <450){
     //     this.y= this.y+25
     // }
@@ -277,8 +258,8 @@ const player = {
   moveDown: function() {
     this.y = this.y + 25
       cx = 375,
-      cy = 350,
-      r = 50,
+      cy = 375,
+      r = 70,
       rx = this.x;    
       ry = this.y;
       rw = this.width;    
@@ -357,11 +338,31 @@ function checkCollision2 (obstacle2) {
   }
 
 function checkCollisionWithDj (obstacle) {
+    cx = 375,
+    cy = 375,
+    r = 87.5,
+    rx = obstacle.x;    
+    ry = obstacle.y;
+    rw = obstacle.width;    
+    rh = obstacle.height;
+    testX = cx;
+    testY = cy;
 
-    if (dj.y < obstacle.y + obstacle.height 
-      && obstacle.y < dj.y + dj.height 
-      && obstacle.x < dj.x + dj.width 
-      & obstacle.x + obstacle.width > dj.x ) {
+  if (cx < rx)         testX = rx;      
+  else if (cx > rx+rw) testX = rx+rw;   
+  if (cy < ry)         testY = ry;      
+  else if (cy > ry+rh) testY = ry+rh;   
+
+  distX = cx-testX;
+  distY = cy-testY;
+  distance = Math.sqrt( (distX*distX) + (distY*distY) );
+
+  if (distance <= r) {
+  
+    // if (dj.y < obstacle.y + obstacle.height 
+    //   && obstacle.y < dj.y + dj.height 
+    //   && obstacle.x < dj.x + dj.width 
+    //   & obstacle.x + obstacle.width > dj.x ) {
   console.log("Obstacle 1 hit the dj")
         gameOver() 
         ctx.fillStyle = "white"
@@ -377,10 +378,33 @@ function checkCollisionWithDj (obstacle) {
   }
 
   function checkCollisionWithDj2 (obstacle2) {
-    if (dj.y < obstacle2.y + obstacle2.height 
-      && obstacle2.y < dj.y + dj.height 
-      && obstacle2.x < dj.x + dj.width 
-      & obstacle2.x + obstacle2.width > dj.x ) {
+    cx = 375,
+    cy = 375,
+    r = 87.5,
+    rx = obstacle2.x;    
+    ry = obstacle2.y;
+    rw = obstacle2.width;    
+    rh = obstacle2.height;
+    testX = cx;
+    testY = cy;
+
+  if (cx < rx)         testX = rx;      
+  else if (cx > rx+rw) testX = rx+rw;   
+  if (cy < ry)         testY = ry;      
+  else if (cy > ry+rh) testY = ry+rh;   
+
+  distX = cx-testX;
+  distY = cy-testY;
+  distance = Math.sqrt( (distX*distX) + (distY*distY) );
+
+  if (distance <= r){
+
+    // if (dj.y < obstacle2.y + obstacle2.height 
+    //   && obstacle2.y < dj.y + dj.height 
+    //   && obstacle2.x < dj.x + dj.width 
+    //   & obstacle2.x + obstacle2.width > dj.x ) {
+
+
   console.log("Obstacle 2 hit the dj")
         gameOver()  
         ctx.fillStyle = "white"
@@ -396,10 +420,33 @@ function checkCollisionWithDj (obstacle) {
   }
 
   function checkCollisionWithDjT (obstacleT) {
-    if (dj.y < obstacleT.y + obstacleT.height 
-      && obstacleT.y < dj.y + dj.height 
-      && obstacleT.x < dj.x + dj.width 
-      & obstacleT.x + obstacleT.width > dj.x ) {
+
+
+    // if (dj.y < obstacleT.y + obstacleT.height 
+    //   && obstacleT.y < dj.y + dj.height 
+    //   && obstacleT.x < dj.x + dj.width 
+    //   & obstacleT.x + obstacleT.width > dj.x ) {
+
+    cx = 375,
+    cy = 375,
+    r = 87.5,
+    rx = obstacleT.x;
+    ry = obstacleT.y;
+    rw = obstacleT.width;
+    rh = obstacleT.height;
+    testX = cx;
+    testY = cy;
+
+  if (cx < rx)         testX = rx;      
+  else if (cx > rx+rw) testX = rx+rw;   
+  if (cy < ry)         testY = ry;      
+  else if (cy > ry+rh) testY = ry+rh;   
+
+  distX = cx-testX;
+  distY = cy-testY;
+  distance = Math.sqrt( (distX*distX) + (distY*distY) );
+
+  if (distance <= r){
   console.log("Obstacle T hit the dj")
         gameOver()  
         ctx.fillStyle = "white"
@@ -414,10 +461,31 @@ function checkCollisionWithDj (obstacle) {
 
   function checkCollisionWithDjB (obstacleB) {
 
-    if (dj.y < obstacleB.y + obstacleB.height 
-      && obstacleB.y < dj.y + dj.height 
-      && obstacleB.x < dj.x + dj.width 
-      & obstacleB.x + obstacleB.width > dj.x ) {
+    // if (dj.y < obstacleB.y + obstacleB.height 
+    //   && obstacleB.y < dj.y + dj.height 
+    //   && obstacleB.x < dj.x + dj.width 
+    //   & obstacleB.x + obstacleB.width > dj.x ) {
+
+    cx = 375,
+    cy = 375,
+    r = 87.5,
+    rx = obstacleB.x;    
+    ry = obstacleB.y;
+    rw = obstacleB.width;    
+    rh = obstacleB.height;
+    testX = cx;
+    testY = cy;
+
+  if (cx < rx)         testX = rx;      
+  else if (cx > rx+rw) testX = rx+rw;   
+  if (cy < ry)         testY = ry;      
+  else if (cy > ry+rh) testY = ry+rh;   
+
+  distX = cx-testX;
+  distY = cy-testY;
+  distance = Math.sqrt( (distX*distX) + (distY*distY) );
+
+  if (distance <= r){
   console.log("Obstacle B hit the dj")
         gameOver()  
         ctx.fillStyle = "white"
@@ -430,11 +498,10 @@ function checkCollisionWithDj (obstacle) {
     }
   }
 
-
 function createObstacle() {
   intervalId = setInterval(()=>{
     obstaclesArray.push(new Obstacle())
-  }, 7000)
+  }, 8000)
 }
 
 function createObstacle2() {
@@ -458,7 +525,7 @@ function createObstacleB() {
 function animationLoop() {
   animationId = setInterval(()=>{
     updateCanvas()
-  }, 32)
+  }, 16)
 }
 
 function showTime() {
