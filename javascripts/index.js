@@ -147,10 +147,9 @@ const player = {
   draw: function() {
     ctx.drawImage(bouncer, this.x, this.y, this.width, this.height)
   },
-
   
   moveLeft: function() {
-    this.x = this.x - 25
+    this.x -= 25
 
       cx = 375,
       cy = 375,
@@ -185,7 +184,7 @@ const player = {
   },
 
   moveRight: function() {
-    this.x = this.x + 25
+    this.x += 25
 
       cx = 375,
       cy = 375,
@@ -222,7 +221,7 @@ const player = {
   },
 
   moveUp: function() {
-    this.y = this.y - 25
+    this.y -= 25
 
       cx = 375,
       cy = 375,
@@ -256,7 +255,7 @@ const player = {
   },
 
   moveDown: function() {
-    this.y = this.y + 25
+    this.y += 25
       cx = 375,
       cy = 375,
       r = 70,
@@ -507,7 +506,7 @@ function createObstacle() {
 function createObstacle2() {
     intervalId2 = setInterval(()=>{
       obstaclesArray2.push(new Obstacle2())
-    }, 5000)
+    }, 7000)
   }
 
 function createObstacleT() {
@@ -525,7 +524,7 @@ function createObstacleB() {
 function animationLoop() {
   animationId = setInterval(()=>{
     updateCanvas()
-  }, 16)
+  }, 32)
 }
 
 function showTime() {
@@ -590,7 +589,7 @@ for (let i = 0; i < obstaclesArrayB.length; i++) {
   
   
   showTime()
-  if (time === -1) {
+  if (time === 0) {
     gameOver()
   }
 }
@@ -620,13 +619,15 @@ button.addEventListener("click", () => {
 });
 
 function startGame() {
-     
+    song1.currentTime = 0
+    song2.currentTime = 0
+    song3.currentTime = 0
     clearInterval(timer)
     time = 45
     timer = setInterval(timedown, 1000);
     
     function timedown(){
-      time= time - 1;
+      time -= 1;
     }
 
   gameOn = true
@@ -664,7 +665,7 @@ function gameOver() {
   ctx.fillStyle = 'black'
   ctx.fillRect(0,0,750,750)
   
-  if (time === -1) {
+  if (time === 0) {
     ctx.fillStyle = "white"
     ctx.font = '30px "Press Start 2P"'
     ctx.fillText("Congratulations!", 145, 200)
