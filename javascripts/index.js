@@ -37,7 +37,11 @@ let gameOn = false
 
 
 const song1 = new Audio("../songs/Mad World - Tears for Fears (Brodie Killem Edit) 1 minute.wav")
+const song2 = new Audio("../songs/Last Christmas 1 minute for game.wav")
+const song3 = new Audio("../songs/Gorillaz 1 minute for game.wav")
+
 const spindown = new Audio("../songs/cd_fx_spindown.wav")
+
 
 
 
@@ -136,12 +140,10 @@ class Obstacle2 {
 
 
 const player = {
-
   x: startingX,
   y: startingY,
   width: 75,
   height: 75,
-
   draw: function() {
     ctx.drawImage(bouncer, this.x, this.y, this.width, this.height)
   },
@@ -186,16 +188,6 @@ const player = {
     }
   }
 }
-
-
-
-
-
-
-
-
-
-
 
 let obstaclesArray = []
 let obstaclesArray2 = []
@@ -267,7 +259,6 @@ function checkCollisionWithDj (obstacle) {
   }
 
   function checkCollisionWithDj2 (obstacle2) {
-
     if (dj.y < obstacle2.y + obstacle2.height 
       && obstacle2.y < dj.y + dj.height 
       && obstacle2.x < dj.x + dj.width 
@@ -287,7 +278,6 @@ function checkCollisionWithDj (obstacle) {
   }
 
   function checkCollisionWithDjT (obstacleT) {
-
     if (dj.y < obstacleT.y + obstacleT.height 
       && obstacleT.y < dj.y + dj.height 
       && obstacleT.x < dj.x + dj.width 
@@ -316,7 +306,7 @@ function checkCollisionWithDj (obstacle) {
         ctx.font = '24px "Press Start 2P"'
         ctx.fillText("OH NO!", 321, 165)
         ctx.font = '20px "Press Start 2P"'
-        ctx.fillText("The DJ already played Bad Bunny.", 75, 200)
+        ctx.fillText("The DJ already played Bad Bunny.", 70, 200)
         ctx.font = '28px "Press Start 2P"'
         ctx.fillText("You lose!", 262, 250)
     }
@@ -350,7 +340,7 @@ function createObstacleB() {
 function animationLoop() {
   animationId = setInterval(()=>{
     updateCanvas()
-  }, 16)
+  }, 32)
 }
 
 function showTime() {
@@ -376,7 +366,6 @@ function updateCanvas() {
     if (obstaclesArray[i].y > canvas.height) {
       obstaclesArray.splice(i, 1)
     }
-
     obstaclesArray[i].newPosition()
     obstaclesArray[i].draw()
     checkCollisionWithDj(obstaclesArray[i])
@@ -426,15 +415,30 @@ const buttons = document.querySelectorAll("button");
 
 buttons.forEach(button => {
 button.addEventListener("click", () => {
-song1.play();
+    if(gameOn === true){
+        return;
+    }
+    else{
+    let randomNumber = Math.floor(Math.random()* 3)
+    
+    if (randomNumber === 0){
+        song1.play();
+    }
+    else if (randomNumber === 1){
+        song2.play();
+    }
+    else if (randomNumber === 2){
+        song3.play();
+    }
+}
 });
 });
 
 function startGame() {
+     
     clearInterval(timer)
     time = 45
     timer = setInterval(timedown, 1000);
-    
     
     function timedown(){
       time= time - 1;
@@ -483,46 +487,19 @@ function gameOver() {
     ctx.fillText("You've SAVED THE RAVE!", 118, 250)
   } else {
     
-//    if (!checkCollisionWithDj (obstacle) === false){
-//     ctx.fillStyle = "white"
-//         ctx.font = '16px "Press Start 2P"'
-//         ctx.fillText("OH NO! She spilled her beer on the dj decks. You lose!", 110, 200)
-//    }
-
-//    else if (!checkCollisionWithDj2(obstacle2) === false){
-//     ctx.fillStyle = "white"
-//     ctx.font = '16px "Press Start 2P"'
-//     ctx.fillText("OH NO! He spilled her beer on the dj decks. You lose!", 110, 200)
-// }
-
-//    else  if (!checkCollisionWithDjT(obstacleT) === false){
-//         ctx.fillStyle = "white"
-//         ctx.font = '16px "Press Start 2P"'
-//         ctx.fillText("The DJ doesn't play Taylor Swift. You lose!", 110, 200)
-//     }
-
-//     else if (!checkCollisionWithDjB(obstacleB) === false){
-//         ctx.fillStyle = "white"
-//         ctx.font = '16px "Press Start 2P"'
-//         ctx.fillText("The DJ already played Bad Bunny. You lose!", 110, 200)
-//     }
-
-    // ctx.fillStyle = "white"
-    // ctx.font = '16px "Press Start 2P"'
-    // ctx.fillText("You didn't save the rave. You lose!", 110, 200)
-
-   
     song1.pause();
     song1.currentTime = 0
+    song2.pause();
+    song2.currentTime = 0
+    song3.pause();
+    song3.currentTime = 0
     spindown.play();
-    
   }
   
   obstaclesArray = []
   obstaclesArray2 = []
   obstaclesArrayT = []
   obstaclesArrayB = []
-
   
 }
 
