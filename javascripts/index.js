@@ -148,44 +148,162 @@ const player = {
     ctx.drawImage(bouncer, this.x, this.y, this.width, this.height)
   },
 
+  
   moveLeft: function() {
     this.x = this.x - 25
-    if(this.x <0){
+
+
+
+
+
+
+      cx = 375,
+      cy = 350,
+      r = 43.75,
+      rx = this.x;    
+      ry = this.y;
+      rw = this.width;    
+      rh = this.height;
+      testX = cx;
+      testY = cy;
+  
+    if (cx < rx)         testX = rx;      
+    else if (cx > rx+rw) testX = rx+rw;   
+    if (cy < ry)         testY = ry;      
+    else if (cy > ry+rh) testY = ry+rh;   
+  
+    distX = cx-testX;
+    distY = cy-testY;
+    distance = Math.sqrt( (distX*distX) + (distY*distY) );
+  
+    if (distance <= r) {
+        this.x= this.x+25;
+    }
+  
+    if (this.x <0){
         this.x= this.x+25
     }
-    if (this.y < 445 && this.y > 232.5 && this.x > 230 && this.x <450){
-        this.x= this.x+25
-    }
+
+
+
+
+
+    // if (this.y < 445 && this.y > 232.5 && this.x > 230 && this.x <450){
+    //     this.x= this.x+25
+    // }
   },
 
   moveRight: function() {
     this.x = this.x + 25
+
+
+
+
+      cx = 375,
+      cy = 350,
+      r = 43.75,
+      rx = this.x;    
+      ry = this.y;
+      rw = this.width;    
+      rh = this.height;
+      testX = cx;
+      testY = cy;
+  
+    if (cx < rx)         testX = rx;      
+    else if (cx > rx+rw) testX = rx+rw;   
+    if (cy < ry)         testY = ry;      
+    else if (cy > ry+rh) testY = ry+rh;   
+  
+    distX = cx-testX;
+    distY = cy-testY;
+    distance = Math.sqrt( (distX*distX) + (distY*distY) );
+  
+    if (distance <= r) {
+        this.x= this.x-25;
+    }
+
+
+
+
     if(this.x >675){
         this.x= this.x-25
     }
-    if (this.y < 445 && this.y > 232.5 && this.x > 230 && this.x <450){
-        this.x= this.x-25
-    }
+
+
+
+    // if (this.y < 445 && this.y > 232.5 && this.x > 230 && this.x <450){
+    //     this.x= this.x-25
+    // }
   },
 
   moveUp: function() {
     this.y = this.y - 25
+
+
+
+      cx = 375,
+      cy = 350,
+      r = 43.75,
+      rx = this.x;    
+      ry = this.y;
+      rw = this.width;    
+      rh = this.height;
+      testX = cx;
+      testY = cy;
+  
+    if (cx < rx)         testX = rx;      
+    else if (cx > rx+rw) testX = rx+rw;   
+    if (cy < ry)         testY = ry;      
+    else if (cy > ry+rh) testY = ry+rh;   
+  
+    distX = cx-testX;
+    distY = cy-testY;
+    distance = Math.sqrt( (distX*distX) + (distY*distY) );
+  
+    if (distance <= r) {
+        this.y= this.y+25;
+    }
     if(this.y <0){
         this.y= this.y+25
     }
-    if (this.y < 445 && this.y > 232.5 && this.x > 230 && this.x <450){
-        this.y= this.y+25
-    }
+
+
+
+    // if (this.y < 445 && this.y > 232.5 && this.x > 230 && this.x <450){
+    //     this.y= this.y+25
+    // }
   },
 
   moveDown: function() {
     this.y = this.y + 25
+      cx = 375,
+      cy = 350,
+      r = 50,
+      rx = this.x;    
+      ry = this.y;
+      rw = this.width;    
+      rh = this.height;
+      testX = cx;
+      testY = cy;
+  
+    if (cx < rx)         testX = rx;      
+    else if (cx > rx+rw) testX = rx+rw;   
+    if (cy < ry)         testY = ry;      
+    else if (cy > ry+rh) testY = ry+rh;   
+  
+    distX = cx-testX;
+    distY = cy-testY;
+    distance = Math.sqrt( (distX*distX) + (distY*distY) );
+  
+    if (distance <= r) {
+        this.y= this.y-25;
+    }
     if(this.y >675){
         this.y= this.y-25
     }
-    if (this.y > 232.5 && this.y < 445 && this.x > 230 && this.x <450){
-        this.y= this.y-25
-    }
+    // if (this.y > 232.5 && this.y < 445 && this.x > 230 && this.x <450){
+    //     this.y= this.y-25
+    // }
   }
 }
 
