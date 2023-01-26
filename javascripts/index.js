@@ -52,7 +52,6 @@ class Obstacle {
     this.y = -60;
     this.width = 60;
     this.height = 60;
-
   }
 
   newPosition() {
