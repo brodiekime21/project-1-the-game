@@ -1,7 +1,6 @@
 const canvas = document.getElementById("canvas")
 const ctx = canvas.getContext('2d')
 
-
 const dancefloor = new Image()
 dancefloor.src = "./images/dancefloor.png"
 
@@ -23,7 +22,6 @@ badBunny.src = "./images/badBunny.png"
 const stage = new Image()
 stage.src = "./images/stage.png"
 
-
 const startingX = canvas.width/2 - 37.5
 const startingY = canvas.height/2 - 162.5
 
@@ -40,7 +38,6 @@ const song2 = new Audio("./songs/Last Christmas 1 minute for game.wav")
 const song3 = new Audio("./songs/Gorillaz 1 minute for game.wav")
 
 const spindown = new Audio("./songs/cd_fx_spindown.wav")
-
 
 class Obstacle {
 
@@ -63,77 +60,69 @@ class Obstacle {
 
 class Obstacle2 {
 
-    constructor() {
-      this.x = -60;
-      this.y = Math.random() * 690;
-      this.width = 60;
-      this.height = 60;
-  
-    }
-  
-    newPosition() {
-      this.x++
-    }
-  
-    draw() {
-      ctx.drawImage(drunkGuy, this.x, this.y, 60, 60)
-    }
-  
+  constructor() {
+    this.x = -60;
+    this.y = Math.random() * 690;
+    this.width = 60;
+    this.height = 60;
   }
-
-  class ObstacleT {
-
-    constructor() {
-      this.x = 750;
-      this.y = Math.random() * 650;
-      this.width = 65;
-      this.height = 100;
   
-    }
-  
-    newPosition() {
-      this.x--
-    }
-  
-    draw() {
-      ctx.drawImage(taylorSwift, this.x, this.y, 65, 100)
-    }
-  
+  newPosition() {
+    this.x++
   }
-
-  class ObstacleB {
-
-    constructor() {
-      this.x = Math.random() * 685;
-      this.y = 750;
-      this.width = 65;
-      this.height = 100;
   
-    }
-  
-    newPosition() {
-      this.y--
-    }
-  
-    draw() {
-      ctx.drawImage(badBunny, this.x, this.y, 65, 100)
-    }
-  
+  draw() {
+    ctx.drawImage(drunkGuy, this.x, this.y, 60, 60)
   }
-
-
-  const dj = {
-    x: 287.5,
-    y: 287.5,
-    height: 175,
-    width: 175,
-
-    draw: function(){
-        ctx.drawImage(stage, this.x,this.y,this.width,this.height)
-    }
 }
 
+class ObstacleT {
 
+  constructor() {
+    this.x = 750;
+    this.y = Math.random() * 650;
+    this.width = 65;
+    this.height = 100;
+  }
+  
+  newPosition() {
+    this.x--
+  }
+  
+  draw() {
+    ctx.drawImage(taylorSwift, this.x, this.y, 65, 100)
+  }
+}
+
+class ObstacleB {
+
+  constructor() {
+    this.x = Math.random() * 685;
+    this.y = 750;
+    this.width = 65;
+    this.height = 100;
+  }
+  
+  newPosition() {
+    this.y--
+  }
+  
+  draw() {
+    ctx.drawImage(badBunny, this.x, this.y, 65, 100)
+  }
+  
+}
+
+const dj = {
+  x: 287.5,
+  y: 287.5,
+  height: 175,
+  width: 175,
+
+  draw: function() {
+    ctx.drawImage(stage, this.x,this.y,this.width,this.height)
+  }
+}
 
 const player = {
   x: startingX,
@@ -142,20 +131,20 @@ const player = {
   height: 75,
   draw: function() {
     ctx.drawImage(bouncer, this.x, this.y, this.width, this.height)
-  },
+    },
   
   moveLeft: function() {
     this.x -= 25
 
-      cx = 375,
-      cy = 375,
-      r = 70,
-      rx = this.x;    
-      ry = this.y;
-      rw = this.width;    
-      rh = this.height;
-      testX = cx;
-      testY = cy;
+    cx = 375,
+    cy = 375,
+    r = 70,
+    rx = this.x;    
+    ry = this.y;
+    rw = this.width;    
+    rh = this.height;
+    testX = cx;
+    testY = cy;
   
     if (cx < rx)         testX = rx;      
     else if (cx > rx+rw) testX = rx+rw;   
@@ -170,24 +159,23 @@ const player = {
         this.x= this.x+25;
     }
   
-    if (this.x <0){
+    if (this.x < 0){
         this.x= this.x+25
     }
-
   },
 
   moveRight: function() {
     this.x += 25
 
-      cx = 375,
-      cy = 375,
-      r = 70,
-      rx = this.x;    
-      ry = this.y;
-      rw = this.width;    
-      rh = this.height;
-      testX = cx;
-      testY = cy;
+    cx = 375,
+    cy = 375,
+    r = 70,
+    rx = this.x;    
+    ry = this.y;
+    rw = this.width;    
+    rh = this.height;
+    testX = cx;
+    testY = cy;
   
     if (cx < rx)         testX = rx;      
     else if (cx > rx+rw) testX = rx+rw;   
@@ -205,21 +193,20 @@ const player = {
     if(this.x >675){
         this.x= this.x-25
     }
-
   },
 
   moveUp: function() {
     this.y -= 25
 
-      cx = 375,
-      cy = 375,
-      r = 70,
-      rx = this.x;    
-      ry = this.y;
-      rw = this.width;    
-      rh = this.height;
-      testX = cx;
-      testY = cy;
+    cx = 375,
+    cy = 375,
+    r = 70,
+    rx = this.x;    
+    ry = this.y;
+    rw = this.width;    
+    rh = this.height;
+    testX = cx;
+    testY = cy;
   
     if (cx < rx)         testX = rx;      
     else if (cx > rx+rw) testX = rx+rw;   
@@ -233,24 +220,23 @@ const player = {
     if (distance <= r) {
         this.y= this.y+25;
     }
-    if(this.y <0){
+    if (this.y <0){
         this.y= this.y+25
     }
-
   },
 
   moveDown: function() {
     this.y += 25
 
-      cx = 375,
-      cy = 375,
-      r = 70,
-      rx = this.x;    
-      ry = this.y;
-      rw = this.width;    
-      rh = this.height;
-      testX = cx;
-      testY = cy;
+    cx = 375,
+    cy = 375,
+    r = 70,
+    rx = this.x;    
+    ry = this.y;
+    rw = this.width;    
+    rh = this.height;
+    testX = cx;
+    testY = cy;
   
     if (cx < rx)         testX = rx;      
     else if (cx > rx+rw) testX = rx+rw;   
@@ -272,8 +258,8 @@ const player = {
 
 let obstaclesArray = []
 let obstaclesArray2 = []
-let obstaclesArrayT=[]
-let obstaclesArrayB=[]
+let obstaclesArrayT = []
+let obstaclesArrayB = []
 
 function checkCollision (obstacle) {
 
@@ -288,47 +274,47 @@ function checkCollision (obstacle) {
 
 function checkCollision2 (obstacle2) {
 
-    if (player.y < obstacle2.y + obstacle2.height 
-      && obstacle2.y < player.y + player.height 
-      && obstacle2.x < player.x + player.width 
-      & obstacle2.x + obstacle2.width > player.x ) {
+  if (player.y < obstacle2.y + obstacle2.height 
+    && obstacle2.y < player.y + player.height 
+    && obstacle2.x < player.x + player.width 
+    & obstacle2.x + obstacle2.width > player.x ) {
   
-      obstaclesArray2.splice(obstaclesArray2.indexOf(obstacle2), 1);
-    }
+    obstaclesArray2.splice(obstaclesArray2.indexOf(obstacle2), 1);
   }
+}
 
-  function checkCollisionT (obstacleT) {
+function checkCollisionT (obstacleT) {
 
-    if (player.y < obstacleT.y + obstacleT.height 
-      && obstacleT.y < player.y + player.height 
-      && obstacleT.x < player.x + player.width 
-      & obstacleT.x + obstacleT.width > player.x ) {
+  if (player.y < obstacleT.y + obstacleT.height 
+    && obstacleT.y < player.y + player.height 
+    && obstacleT.x < player.x + player.width 
+    & obstacleT.x + obstacleT.width > player.x ) {
   
-      obstaclesArrayT.splice(obstaclesArrayT.indexOf(obstacleT), 1);
-    }
+    obstaclesArrayT.splice(obstaclesArrayT.indexOf(obstacleT), 1);
   }
+}
 
-  function checkCollisionB (obstacleB) {
+function checkCollisionB (obstacleB) {
 
-    if (player.y < obstacleB.y + obstacleB.height 
-      && obstacleB.y < player.y + player.height 
-      && obstacleB.x < player.x + player.width 
-      & obstacleB.x + obstacleB.width > player.x ) {
+  if (player.y < obstacleB.y + obstacleB.height 
+    && obstacleB.y < player.y + player.height 
+    && obstacleB.x < player.x + player.width 
+    & obstacleB.x + obstacleB.width > player.x ) {
   
-      obstaclesArrayB.splice(obstaclesArrayB.indexOf(obstacleB), 1);
-    }
+    obstaclesArrayB.splice(obstaclesArrayB.indexOf(obstacleB), 1);
   }
+}
 
 function checkCollisionWithDj (obstacle) {
-    cx = 375,
-    cy = 375,
-    r = 87.5,
-    rx = obstacle.x;    
-    ry = obstacle.y;
-    rw = obstacle.width;    
-    rh = obstacle.height;
-    testX = cx;
-    testY = cy;
+  cx = 375,
+  cy = 375,
+  r = 87.5,
+  rx = obstacle.x;    
+  ry = obstacle.y;
+  rw = obstacle.width;    
+  rh = obstacle.height;
+  testX = cx;
+  testY = cy;
 
   if (cx < rx)         testX = rx;      
   else if (cx > rx+rw) testX = rx+rw;   
@@ -340,35 +326,29 @@ function checkCollisionWithDj (obstacle) {
   distance = Math.sqrt( (distX*distX) + (distY*distY) );
 
   if (distance <= r) {
-  
-    // if (dj.y < obstacle.y + obstacle.height 
-    //   && obstacle.y < dj.y + dj.height 
-    //   && obstacle.x < dj.x + dj.width 
-    //   & obstacle.x + obstacle.width > dj.x ) {
-  console.log("Obstacle 1 hit the dj")
-        gameOver() 
-        ctx.fillStyle = "white"
-        ctx.font = '24px "Press Start 2P"'
-        ctx.fillText("OH NO!", 321, 140)
-        ctx.font = '20px "Press Start 2P"'
-        ctx.fillText("She spilled her beer", 180, 175) 
-        ctx.font = '20px "Press Start 2P"'
-        ctx.fillText("on the dj decks.", 225, 205) 
-        ctx.font = '28px "Press Start 2P"'
-        ctx.fillText("You lose!", 262, 250)
-    }
+    gameOver() 
+    ctx.fillStyle = "white"
+    ctx.font = '24px "Press Start 2P"'
+    ctx.fillText("OH NO!", 321, 140)
+    ctx.font = '20px "Press Start 2P"'
+    ctx.fillText("She spilled her beer", 180, 175) 
+    ctx.font = '20px "Press Start 2P"'
+    ctx.fillText("on the dj decks.", 225, 205) 
+    ctx.font = '28px "Press Start 2P"'
+    ctx.fillText("You lose!", 262, 250)
   }
+}
 
-  function checkCollisionWithDj2 (obstacle2) {
-    cx = 375,
-    cy = 375,
-    r = 87.5,
-    rx = obstacle2.x;    
-    ry = obstacle2.y;
-    rw = obstacle2.width;    
-    rh = obstacle2.height;
-    testX = cx;
-    testY = cy;
+function checkCollisionWithDj2 (obstacle2) {
+  cx = 375,
+  cy = 375,
+  r = 87.5,
+  rx = obstacle2.x;    
+  ry = obstacle2.y;
+  rw = obstacle2.width;    
+  rh = obstacle2.height;
+  testX = cx;
+  testY = cy;
 
   if (cx < rx)         testX = rx;      
   else if (cx > rx+rw) testX = rx+rw;   
@@ -380,44 +360,29 @@ function checkCollisionWithDj (obstacle) {
   distance = Math.sqrt( (distX*distX) + (distY*distY) );
 
   if (distance <= r){
-
-    // if (dj.y < obstacle2.y + obstacle2.height 
-    //   && obstacle2.y < dj.y + dj.height 
-    //   && obstacle2.x < dj.x + dj.width 
-    //   & obstacle2.x + obstacle2.width > dj.x ) {
-
-
-  console.log("Obstacle 2 hit the dj")
-        gameOver()  
-        ctx.fillStyle = "white"
-        ctx.font = '24px "Press Start 2P"'
-        ctx.fillText("OH NO!", 321, 140)
-        ctx.font = '20px "Press Start 2P"'
-        ctx.fillText("He spilled his beer", 190, 175) 
-        ctx.font = '20px "Press Start 2P"'
-        ctx.fillText("on the dj decks.", 225, 205) 
-        ctx.font = '28px "Press Start 2P"'
-        ctx.fillText("You lose!", 262, 250)
-    }
+    gameOver()  
+    ctx.fillStyle = "white"
+    ctx.font = '24px "Press Start 2P"'
+    ctx.fillText("OH NO!", 321, 140)
+    ctx.font = '20px "Press Start 2P"'
+    ctx.fillText("He spilled his beer", 190, 175) 
+    ctx.font = '20px "Press Start 2P"'
+    ctx.fillText("on the dj decks.", 225, 205) 
+    ctx.font = '28px "Press Start 2P"'
+    ctx.fillText("You lose!", 262, 250)
   }
+}
 
-  function checkCollisionWithDjT (obstacleT) {
-
-
-    // if (dj.y < obstacleT.y + obstacleT.height 
-    //   && obstacleT.y < dj.y + dj.height 
-    //   && obstacleT.x < dj.x + dj.width 
-    //   & obstacleT.x + obstacleT.width > dj.x ) {
-
-    cx = 375,
-    cy = 375,
-    r = 87.5,
-    rx = obstacleT.x;
-    ry = obstacleT.y;
-    rw = obstacleT.width;
-    rh = obstacleT.height;
-    testX = cx;
-    testY = cy;
+function checkCollisionWithDjT (obstacleT) {
+  cx = 375,
+  cy = 375,
+  r = 87.5,
+  rx = obstacleT.x;
+  ry = obstacleT.y;
+  rw = obstacleT.width;
+  rh = obstacleT.height;
+  testX = cx;
+  testY = cy;
 
   if (cx < rx)         testX = rx;      
   else if (cx > rx+rw) testX = rx+rw;   
@@ -429,34 +394,27 @@ function checkCollisionWithDj (obstacle) {
   distance = Math.sqrt( (distX*distX) + (distY*distY) );
 
   if (distance <= r){
-  console.log("Obstacle T hit the dj")
-        gameOver()  
-        ctx.fillStyle = "white"
-        ctx.font = '24px "Press Start 2P"'
-        ctx.fillText("OH NO!", 321, 165)
-        ctx.font = '20px "Press Start 2P"'
-        ctx.fillText("The DJ doesn't play Taylor Swift.", 60, 205)
-        ctx.font = '28px "Press Start 2P"'
-        ctx.fillText("You lose!", 262, 250)
-    }
+    gameOver()  
+    ctx.fillStyle = "white"
+    ctx.font = '24px "Press Start 2P"'
+    ctx.fillText("OH NO!", 321, 165)
+    ctx.font = '20px "Press Start 2P"'
+    ctx.fillText("The DJ doesn't play Taylor Swift.", 60, 205)
+    ctx.font = '28px "Press Start 2P"'
+    ctx.fillText("You lose!", 262, 250)
   }
+}
 
-  function checkCollisionWithDjB (obstacleB) {
-
-    // if (dj.y < obstacleB.y + obstacleB.height 
-    //   && obstacleB.y < dj.y + dj.height 
-    //   && obstacleB.x < dj.x + dj.width 
-    //   & obstacleB.x + obstacleB.width > dj.x ) {
-
-    cx = 375,
-    cy = 375,
-    r = 87.5,
-    rx = obstacleB.x;    
-    ry = obstacleB.y;
-    rw = obstacleB.width;    
-    rh = obstacleB.height;
-    testX = cx;
-    testY = cy;
+function checkCollisionWithDjB (obstacleB) {
+  cx = 375,
+  cy = 375,
+  r = 87.5,
+  rx = obstacleB.x;    
+  ry = obstacleB.y;
+  rw = obstacleB.width;    
+  rh = obstacleB.height;
+  testX = cx;
+  testY = cy;
 
   if (cx < rx)         testX = rx;      
   else if (cx > rx+rw) testX = rx+rw;   
@@ -468,17 +426,16 @@ function checkCollisionWithDj (obstacle) {
   distance = Math.sqrt( (distX*distX) + (distY*distY) );
 
   if (distance <= r){
-  console.log("Obstacle B hit the dj")
-        gameOver()  
-        ctx.fillStyle = "white"
-        ctx.font = '24px "Press Start 2P"'
-        ctx.fillText("OH NO!", 321, 165)
-        ctx.font = '20px "Press Start 2P"'
-        ctx.fillText("The DJ already played Bad Bunny.", 70, 200)
-        ctx.font = '28px "Press Start 2P"'
-        ctx.fillText("You lose!", 262, 250)
-    }
+    gameOver()  
+    ctx.fillStyle = "white"
+    ctx.font = '24px "Press Start 2P"'
+    ctx.fillText("OH NO!", 321, 165)
+    ctx.font = '20px "Press Start 2P"'
+    ctx.fillText("The DJ already played Bad Bunny.", 70, 200)
+    ctx.font = '28px "Press Start 2P"'
+    ctx.fillText("You lose!", 262, 250)
   }
+}
 
 function createObstacle() {
   intervalId = setInterval(()=>{
@@ -487,22 +444,22 @@ function createObstacle() {
 }
 
 function createObstacle2() {
-    intervalId2 = setInterval(()=>{
-      obstaclesArray2.push(new Obstacle2())
-    }, 7000)
-  }
+  intervalId2 = setInterval(()=>{
+    obstaclesArray2.push(new Obstacle2())
+  }, 7000)
+}
 
 function createObstacleT() {
-    intervalIdT = setInterval(()=>{
-      obstaclesArrayT.push(new ObstacleT())
-    }, 6000)
-  }
+  intervalIdT = setInterval(()=>{
+    obstaclesArrayT.push(new ObstacleT())
+  }, 6000)
+}
 
 function createObstacleB() {
-    intervalIdB = setInterval(()=>{
-      obstaclesArrayB.push(new ObstacleB())
-    }, 5000)
-  }
+  intervalIdB = setInterval(()=>{
+    obstaclesArrayB.push(new ObstacleB())
+  }, 5000)
+}
 
 function animationLoop() {
   animationId = setInterval(()=>{
@@ -537,10 +494,10 @@ function updateCanvas() {
     obstaclesArray[i].draw()
     checkCollisionWithDj(obstaclesArray[i])
     checkCollision(obstaclesArray[i])
-}
+  }
 
 
-for (let i = 0; i < obstaclesArray2.length; i++) {
+  for (let i = 0; i < obstaclesArray2.length; i++) {
     if (obstaclesArray2[i].y > canvas.height) {
       obstaclesArray2.splice(i, 1)
     }
@@ -548,9 +505,9 @@ for (let i = 0; i < obstaclesArray2.length; i++) {
     obstaclesArray2[i].draw()
     checkCollisionWithDj2(obstaclesArray2[i])
     checkCollision2(obstaclesArray2[i])
-}
+  }
 
-for (let i = 0; i < obstaclesArrayT.length; i++) {
+  for (let i = 0; i < obstaclesArrayT.length; i++) {
     if (obstaclesArrayT[i].y > canvas.height) {
       obstaclesArrayT.splice(i, 1)
     }
@@ -558,9 +515,9 @@ for (let i = 0; i < obstaclesArrayT.length; i++) {
     obstaclesArrayT[i].draw()
     checkCollisionWithDjT(obstaclesArrayT[i])
     checkCollisionT(obstaclesArrayT[i])
-}
+  }
 
-for (let i = 0; i < obstaclesArrayB.length; i++) {
+  for (let i = 0; i < obstaclesArrayB.length; i++) {
     if (obstaclesArrayB[i].y > canvas.height) {
       obstaclesArrayB.splice(i, 1)
     }
@@ -568,8 +525,7 @@ for (let i = 0; i < obstaclesArrayB.length; i++) {
     obstaclesArrayB[i].draw()
     checkCollisionWithDjB(obstaclesArrayB[i])
     checkCollisionB(obstaclesArrayB[i])
-}
-  
+  }
   
   showTime()
   if (time === 0) {
@@ -602,26 +558,23 @@ button.addEventListener("click", () => {
 });
 
 function startGame() {
-    song1.currentTime = 0
-    song2.currentTime = 0
-    song3.currentTime = 0
-    clearInterval(timer)
-    time = 45
-    timer = setInterval(timedown, 1000);
-    
-    function timedown(){
-      time -= 1;
-    }
-
   gameOn = true
-
+  song1.currentTime = 0
+  song2.currentTime = 0
+  song3.currentTime = 0
   obstaclesArray = []
   obstaclesArray2 = []
   obstaclesArrayT = []
   obstaclesArrayB = []
-
   player.x = startingX
   player.y = startingY
+  
+  clearInterval(timer)
+  time = 45
+  timer = setInterval(timedown, 1000); 
+  function timedown(){
+    time -= 1;
+  }
 
   ctx.drawImage(dancefloor, 0, 0, 750, 750)
   dj.draw()
@@ -634,10 +587,8 @@ function startGame() {
 }
 
 function gameOver() {
-
   gameOn = false
   
-  console.log("Game over")
   clearInterval(animationId)
   clearInterval(intervalId)
   clearInterval(intervalId2)
@@ -654,8 +605,8 @@ function gameOver() {
     ctx.fillText("Congratulations!", 145, 200)
     ctx.font = '24px "Press Start 2P"'
     ctx.fillText("You've SAVED THE RAVE!", 118, 250)
-  } else {
-    
+  } 
+  else {
     song1.pause();
     song1.currentTime = 0
     song2.pause();
@@ -664,12 +615,10 @@ function gameOver() {
     song3.currentTime = 0
     spindown.play();
   }
-  
   obstaclesArray = []
   obstaclesArray2 = []
   obstaclesArrayT = []
   obstaclesArrayB = []
-  
 }
 
 window.onload = () => {
@@ -694,9 +643,7 @@ window.onload = () => {
         player.moveRight();
         break;
     }
-
   });
-
 };
 
 window.addEventListener("keydown", function(e) {
