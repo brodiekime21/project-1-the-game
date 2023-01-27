@@ -35,14 +35,11 @@ let animationId;
 
 let gameOn = false
 
-
 const song1 = new Audio("./songs/Mad World - Tears for Fears (Brodie Killem Edit) 1 minute.wav")
 const song2 = new Audio("./songs/Last Christmas 1 minute for game.wav")
 const song3 = new Audio("./songs/Gorillaz 1 minute for game.wav")
 
 const spindown = new Audio("./songs/cd_fx_spindown.wav")
-
-
 
 
 class Obstacle {
@@ -177,9 +174,6 @@ const player = {
         this.x= this.x+25
     }
 
-    // if (this.y < 445 && this.y > 232.5 && this.x > 230 && this.x <450){
-    //     this.x= this.x+25
-    // }
   },
 
   moveRight: function() {
@@ -212,11 +206,6 @@ const player = {
         this.x= this.x-25
     }
 
-
-
-    // if (this.y < 445 && this.y > 232.5 && this.x > 230 && this.x <450){
-    //     this.x= this.x-25
-    // }
   },
 
   moveUp: function() {
@@ -248,13 +237,11 @@ const player = {
         this.y= this.y+25
     }
 
-    // if (this.y < 445 && this.y > 232.5 && this.x > 230 && this.x <450){
-    //     this.y= this.y+25
-    // }
   },
 
-  moveDown: function movingDown() {
+  moveDown: function() {
     this.y += 25
+
       cx = 375,
       cy = 375,
       r = 70,
@@ -280,10 +267,6 @@ const player = {
     if(this.y >675){
         this.y= this.y-25
     }
-    // if (this.y > 232.5 && this.y < 445 && this.x > 230 && this.x <450){
-    //     this.y= this.y-25
-    // }
-    window.requestAnimationFrame(movingDown)
   }
 }
 
