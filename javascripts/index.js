@@ -2,25 +2,25 @@ const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 
 const dancefloor = new Image();
-dancefloor.src = "./images/dancefloor.png";
+dancefloor.src = "./assets/images/dancefloor.png";
 
 const bouncer = new Image();
-bouncer.src = "./images/bouncer.png";
+bouncer.src = "./assets/images/bouncer.png";
 
 const drunkGirl = new Image();
-drunkGirl.src = "./images/drunkGirl.png";
+drunkGirl.src = "./assets/images/drunkGirl.png";
 
 const drunkGuy = new Image();
-drunkGuy.src = "./images/drunkGuy.png";
+drunkGuy.src = "./assets/images/drunkGuy.png";
 
 const taylorSwift = new Image();
-taylorSwift.src = "./images/taylorSwift.png";
+taylorSwift.src = "./assets/images/taylorSwift.png";
 
 const badBunny = new Image();
-badBunny.src = "./images/badBunny.png";
+badBunny.src = "./assets/images/badBunny.png";
 
 const stage = new Image();
-stage.src = "./images/stage.png";
+stage.src = "./assets/images/stage.png";
 
 const startingX = canvas.width / 2 - 37.5;
 const startingY = canvas.height / 2 - 162.5;
@@ -34,12 +34,12 @@ let animationId;
 let gameOn = false;
 
 const song1 = new Audio(
-  "./songs/Mad World - Tears for Fears (Brodie Killem Edit) 1 minute.wav"
+  "./assets/songs/Mad World - Tears for Fears (Brodie Killem Edit) 1 minute.wav"
 );
-const song2 = new Audio("./songs/Last Christmas 1 minute for game.wav");
-const song3 = new Audio("./songs/Gorillaz 1 minute for game.wav");
+const song2 = new Audio("./assets/songs/Last Christmas 1 minute for game.wav");
+const song3 = new Audio("./assets/songs/Gorillaz 1 minute for game.wav");
 
-const spindown = new Audio("./songs/cd_fx_spindown.wav");
+const spindown = new Audio("./assets/songs/cd_fx_spindown.wav");
 
 class Obstacle {
   constructor() {
