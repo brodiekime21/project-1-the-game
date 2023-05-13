@@ -7,7 +7,7 @@ Save The Rave is a fun and exciting canvas game that challenges players to save 
 
 ## How to Play
 
-1. Clone the repository and open `index.html` in your browser.
+1. Visit https://brodiekime21.github.io/project-1-the-game/ in your browser.
 
 2. Press the **Start Game** button.
 
@@ -26,9 +26,9 @@ Save The Rave is a fun and exciting canvas game that challenges players to save 
 - JavaScript
 - Canvas API
 
-## Game Structure
+## Project Structure
 
-The game consists of the following files:
+The project consists of the following files:
 
 1. `index.html`: The main HTML file that contains the structure of the game, including the game board, intro section, and game controls.
 
