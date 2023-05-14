@@ -5,6 +5,14 @@
 
 Save The Rave is a fun and exciting canvas game that challenges players to save a rave party by stopping distractions from getting to the DJ. The game features a lively soundtrack and a colorful theme.
 
+## Table of Contents
+
+1. [How to Play](#how-to-play)
+2. [Technologies](#technologies)
+3. [Project Structure](#project-structure)
+4. [License](#license)
+5. [Support](#support)
+
 ## How to Play
 
 1. Visit https://brodiekime21.github.io/project-1-the-game/ in your browser.
@@ -19,7 +27,7 @@ Save The Rave is a fun and exciting canvas game that challenges players to save 
 
 6. If a distraction reaches the DJ, a DJ spinback sound will play, and a message specific to the type of distraction will be displayed.
 
-## Technologies Used
+## Technologies
 
 - HTML
 - CSS
